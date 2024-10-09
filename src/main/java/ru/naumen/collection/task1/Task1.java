@@ -1,5 +1,8 @@
 package ru.naumen.collection.task1;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Дано:
  * <pre>
@@ -24,6 +27,8 @@ package ru.naumen.collection.task1;
  */
 public class Task1
 {
+    private Map<Ticket, Goods> mapOfTicket = new HashMap<>();
+
     public enum Goods {
         /**
          * нет товаров
@@ -47,7 +52,19 @@ public class Task1
      * <p>Достаточно их определить только для id, т.к. он уникален</p>
      */
     public Goods getGoods(Ticket ticket) {
-        // TODO реализовать
-        return null;
+        return mapOfTicket.get(ticket);
     }
+    /**
+     * Ответы за вопросы:
+     * 1. В этом задании я выбрала hashmap (ключ-значение),все ключи уникальны.
+     * В хэш-таблицу записывается ключ (ticket, который сравнивается по id),
+     * дальше так как я переопределила методы hashcode() и equals() операция получения элемента выполняется
+     * за О(1).
+     *
+     * 2-3. Как сказано в п.1 получение элемента выполняется за О(1), при условии,
+     * что хэш-функция определена нормально.
+     * Итоговая сложность алгоритма: О(n), где n - количество билетов.
+     */
+
+
 }
