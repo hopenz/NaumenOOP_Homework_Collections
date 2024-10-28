@@ -105,7 +105,11 @@ public class Task4 {
             ConcurrentCalculationManager<T> calculationManager,
             Supplier<T> task) {
         executorService.submit(() -> {
-            calculationManager.addTask(task);
+            try {
+                calculationManager.addTask(task);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         });
     }
 }
